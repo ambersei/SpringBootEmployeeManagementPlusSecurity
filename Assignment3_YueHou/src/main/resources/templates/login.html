@@ -1,0 +1,66 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Login Page </title>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f2f2f2;
+}
+
+form {
+    background-color: #d3d3d3;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+
+	<form method="post" th:action="@{/login}">
+	
+		<div th:if="${param.error}">
+			<div class="error">Invalid credentials</div>
+		</div>	
+		
+		<div th:if="${param.logout}">
+			<div class="success">You have been logged out</div><br>
+		</div>
+		
+		<!-- check property must be the same spelling, otherwise it does work -->
+		Email:<input type="email" name="username" /><br><br>
+		Password:<input type="password" name="password" /><br><br>
+		<input type="submit" value="Log In" name="login-submit" /><br>	
+	</form>
+	
+
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

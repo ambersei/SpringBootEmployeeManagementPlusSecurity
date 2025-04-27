@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Delete Page</title>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f2f2f2;
+}
+.secureDelete{
+	display: flex;
+	flex-direction: column;
+}
+</style>
+</head>
+<body>
+	<div class="secureDelete">
+	<h3>This is the Delete page </h3>
+	
+	<form name="deleteForm" action="#" method="post" th:action="@{/deleteEmp}">
+    			
+    Employee ID: 
+    <select  name="empid">
+        <option th:each="e : ${employeeList}" 
+       	 	th:text="${e.employee_id}"></option>
+    </select>
+    
+    	<input type="submit" value="Delete">
+	</form>
+	
+	<p th:text="${msg}"  style="color: green;"></p>
+	<p>
+		<a th:href="@{/}">Back to home page</a>
+	</p>
+	
+	<form method="post" th:action="@{/logout}">
+		<input type="submit" value="Logout" />
+	</form>
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

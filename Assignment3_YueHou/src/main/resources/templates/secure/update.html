@@ -1,0 +1,72 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Update Page</title>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f2f2f2;
+}
+.secureUpdate{
+	display: flex;
+	flex-direction: column;
+}
+form {
+    background-color: #d3d3d3;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+<div class="secureUpdate">
+	<h3>This is the Update page </h3>
+	
+	<p th:text="${msg}"  style="color: green;"></p>
+	
+	<Form name="updateForm" method="post" th:action="@{/updateEmpSal}"> 
+		Employee ID: 
+		<select name="empid">
+	        <option th:each="e : ${employeeList}" 
+	        	th:value="${e.employee_id}"
+	       	 	th:text="${e.employee_id}"></option>
+	    </select><br>
+    	New Salary: <input type="number" name="newSal" step="0.01" min="0" required/><br>
+    	 <input type="submit" value="Update">
+    </Form>
+	
+	<p><a th:href="@{/}">Back to home page</a></p>
+
+</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

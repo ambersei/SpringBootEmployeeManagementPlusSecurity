@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Secure Index</title>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f2f2f2;
+}
+.secureIndex{
+	display: flex;
+	flex-direction: column;
+}
+div a {
+    background-color: rgb(83, 252, 255);
+    padding: 5px;
+}
+</style>
+</head>
+<body>
+	<div class="secureIndex">
+		<h3>Click the action that you want to perform </h3>
+		
+			Email:[[${email}]]
+		<br> Roles:
+			<ul>
+				<li th:each="role : ${roleList}" th:text="${role}"></li>
+			</ul>
+	
+		<div><a th:href="@{/secure/insert}">Insert</a></div><br>
+		<div><a th:href="@{/secure/update}">Update</a></div><br>
+		<div><a th:href="@{/secure/delete}">Delete</a></div><br>
+		
+		
+		<form method="post" th:action="@{/logout}">
+			<input type="submit" value="Logout">
+		</form>
+		
+		<p><a th:href="@{/}">Back to home page</a></p>
+		
+	</div>
+</body>
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

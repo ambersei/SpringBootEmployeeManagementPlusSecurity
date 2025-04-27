@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html xmlns:th="https://www.thymeleaf.org"
+	xmlns:sec="https://www.thymeleaf.org/thymeleaf-extras-springsecurity5">
+<head>
+<meta charset="UTF-8">
+<title>Insert Page </title>
+<style>
+body {
+   margin: 0;
+   padding: 0;
+   height: 100vh;
+   display: flex;
+   justify-content: center;
+   align-items: center;
+   background-color: #f2f2f2;
+}
+.secureInsert{
+	display: flex;
+	flex-direction: column;
+}
+form {
+    background-color: #d3d3d3;
+    padding: 20px;
+    width: 300px;
+    text-align: center;
+}
+</style>
+</head>
+<body>
+	<div class="secureInsert">
+	<h3>This is the insert page </h3>
+	
+	<p th:text="${msg}"  style="color: green;"></p>
+	
+	<form name="insertForm" action="#" method="post" th:action="@{/insertEmp}" th:object="${employee}">
+    			<input type="hidden" th:field="*{employee_id}" /><br>
+    First Name: <input type="text" th:field="*{first_name}" /><br>
+    Last Name: <input type="text" th:field="*{last_name}" required  /><br>
+    Email: <input type="email" th:field="*{email}" required /><br>
+    Phone Number: <input type="text" th:field="*{phone_number}"  maxlength="20"/><br>
+    Hire Date: <input type="date" th:field="*{hire_date}" required  /><br>
+    Job ID: <input type="text" th:field="*{job_id}" required /><br>
+    Salary: <input type="number" th:field="*{salary}" step="0.01" min="0"/><br>
+    Commission: <input type="number" step="0.01" min="0" max="0.99" th:field="*{commission_pct}" /><br>
+    Manager ID: <input type="number" th:field="*{manager_id}" /><br>
+    
+    Department ID: 
+    <select th:field="*{department_id}" >
+        <option th:each="d : ${departmentList}" 
+      		  th:value="${d.department_id}" 
+       	 	th:text="${d.department_name}"></option>
+    </select>
+    <br>
+    
+    <input type="submit" value="Insert">
+	</form>
+	
+	
+	<p><a th:href="@{/}">Back to home page</a></p>
+	</div>
+
+</body>
+</html>
